@@ -1,29 +1,28 @@
 import React, { FC } from "react";
 
-import {
-    View, 
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-} from 'react-native'
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import MapView from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Maps from "../../Components/Maps/Maps.Component";
+import useMapsPermission from "../../hooks/useMapsPermission";
+interface Props {}
 
-interface Props {
+const Home: FC<Props> = () => {
+  const { status, location, errorMsg } = useMapsPermission();
+  console.log(status);
+  console.log(location);
 
-}
-
-const Home : FC<Props> = () => {
-    return (
-        <SafeAreaView style = {styles.container} >
-            <Text> This is Home </Text>
-        </SafeAreaView>
-    )
+  return (
+    <SafeAreaView style={styles.container}>
+      <Maps />
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
-    container : {
-        flex: 1,
-    }
-})
+  container: {
+    flex: 1,
+  },
+});
 
 export default Home;
