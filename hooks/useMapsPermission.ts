@@ -18,6 +18,8 @@ const useMapsPermission = (): useMapsPermissionTypes => {
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
+      console.log(status);
+
       if (status !== "granted") {
         setErrorMsg("Permission to access location was denied");
         return;
