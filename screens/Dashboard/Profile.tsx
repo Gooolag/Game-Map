@@ -164,12 +164,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
       },
       textInput: {
-        alignSelf: 'center',
+        alignSelf: 'flex-start',
         borderColor: "gray",
-        width: "80%",
+        width: "90%",
         borderWidth: 1,
         borderRadius: 10,
         padding: 20,
+        marginLeft: 15
       },
 })
 
