@@ -5,14 +5,15 @@ import ToggleSwitch from 'toggle-switch-react-native'
 
 
 import {
-    ScrollView,
     View, 
     TouchableOpacity,
     Text,
     StyleSheet,
     Image,
     Button,
-    Pressable
+    Pressable,
+    ScrollView,
+    TextInput
 } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -24,7 +25,6 @@ const Profile : FC<Props> = () => {
     const [value, setValue] = React.useState(true);
 
     return (
-        <ScrollView >
         <View style={styles.container}>
       <View style={styles.item1}>           
        <View style={styles.item11}>
@@ -40,8 +40,9 @@ const Profile : FC<Props> = () => {
           <Text style={styles.text}>Hello Nuggah!</Text>
         </View>
       </View>
-      <View style={styles.item3}>           
-       <Text style={styles.text}>Status </Text>
+      <View style={styles.item3}>    
+      <View style={styles.item31} ><TextInput placeholder="Share anything you want!!" placeholderTextColor="#F2E9E4"  style={styles.textInput} /></View>     
+      <View style={styles.item32}><Button title=">"></Button></View>
       </View>
       <View style={styles.item4}>  
       <View style={styles.item41}>         
@@ -52,7 +53,7 @@ const Profile : FC<Props> = () => {
         label="Visiblity"
         size="large"
         onToggle={isOn => console.log("changed to : ", isOn)}
-        labelStyle= {styles.incog}
+        labelStyle= {styles.button}
         /> 
       </View>
        <View style={styles.item41}>         
@@ -65,14 +66,15 @@ const Profile : FC<Props> = () => {
       <Pressable><Text style={styles.button}>Logout</Text></Pressable> 
       </View>
       </View>
-      </View>
-    </ScrollView>
+    </View>
     )
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+
+        alignItems: 'center',
         justifyContent: 'center',
         height: '50%',
         alignItems: 'stretch',
@@ -96,15 +98,15 @@ const styles = StyleSheet.create({
       },
       item3: {
         flex: 2,
-        backgroundColor: '#e9c46a',
+        backgroundColor: '#4A4E69',
         justifyContent: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
+        flexDirection: 'row',
         margin: 30,
+        padding:10,
         borderRadius: 20
       },
       item4: {
-        backgroundColor: '#e9c46a',
-
         flex: 6,
         alignItems: 'stretch',
         padding: 10
@@ -118,6 +120,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       },
       item22: {
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      item31: {
+        flex: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      item32: {
         justifyContent: 'center',
         alignItems: 'center',
       },
@@ -139,14 +150,27 @@ const styles = StyleSheet.create({
         height: 80,
       },
       button: {
-        margin: 20,
+        margin: 10,
         fontSize:15,
         fontWeight: 'bold',
+        borderColor: '#22223B',
+        borderWidth: 2,
+        borderRadius: 10,
+        padding:10
       },
       incog: {
           fontSize:30,
+          marginLeft: 20,
         fontWeight: 'bold',
-      }
+      },
+      textInput: {
+        alignSelf: 'center',
+        borderColor: "gray",
+        width: "80%",
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 20,
+      },
 })
 
 export default Profile;
