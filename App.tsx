@@ -1,16 +1,10 @@
 import React, {FC} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 //React Navigation
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
-import MainLayout from './screens/Dashboard/MainLayout';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import MainLayout from './Navigation/MainLayout';
 
 interface Props {}
 

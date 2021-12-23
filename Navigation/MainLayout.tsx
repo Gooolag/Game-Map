@@ -2,25 +2,21 @@ import React, {createRef, FC, useCallback, useEffect, useRef, useState} from 're
 
 import {View, Image, Text, StyleSheet, Animated, FlatList, TouchableOpacity} from 'react-native';
 import {Shadow} from 'react-native-shadow-2';
-import Home from './Home';
-import Profile from './Profile';
-import Search from './Search';
+import { constants, SIZES, COLORS } from '../constants';
+import Home from '../screens/Home/Home.Screen';
+import Profile from '../screens/Profile/Profile.Screen';
+import Search from '../screens/Search/Search.Screen';
 
-import {COLORS, constants, SIZES} from '../../constants';
+import { bottomTabIndexType } from '../utils/types';
 
 interface Props {}
 
-const bottom_tabs = constants.bottom_tabs.map( (tabs) => ({
-    ...tabs,
-    ref : createRef()
-}) );
-
-const Tabs = ({scrollX, onBottomTabPress}) => {
+const Tabs = ({onBottomTabPress}) => {
     return (
         <View style = {styles.tabsContainer} >
-            {bottom_tabs.map((item, index) => {
+            {constants?.bottom_tabs.map((item, index : any) => {
                 return (
-                    <TouchableOpacity key = {`tabs-${index}`} ref = {item.ref} style = {styles.tabsWrapper} onPress={() => onBottomTabPress(index)} >
+                    <TouchableOpacity key = {`tabs-${index}`} style = {styles.tabsWrapper} onPress={() => onBottomTabPress(index)} >
                         <Image resizeMode='contain' source={item.icon} style = {styles.tabIcons}  />
                         <Text style = {styles.iconLabel} > {item.label} </Text>
                     </TouchableOpacity>
@@ -32,13 +28,13 @@ const Tabs = ({scrollX, onBottomTabPress}) => {
 
 const MainLayout: FC<Props> = props => {
     
-    const flatListRef = useRef();    
-    const scrollX = useRef(new Animated.Value(0)).current;
-    const onBottomTabPress = useCallback( bottomTabIndex => {
+    const flatListRef = useRef<any>();    
+    const scrollX = useRef<Animated.Value>(new Animated.Value(0)).current;
+    const onBottomTabPress = useCallback<any>( (bottomTabIndex: bottomTabIndexType) => {
         flatListRef?.current?.scrollToOffset({
             offset: bottomTabIndex * SIZES.width
         })
-    } );
+    },[] );
     const RenderContent = () => {
         return (
         <View style={styles.contentContainer}>
@@ -71,14 +67,14 @@ const MainLayout: FC<Props> = props => {
         );
     };
 
-    const renderBottomTabs = () => {
+    const RenderBottomTabs = () => {
         return (
             <View style = {styles.bottomTabs} >
                 <Shadow
                     size={[ SIZES.width - ( SIZES.padding * 2 ), 85 ]}
                 >
                     <View style = {styles.bottomContainer} >
-                        <Tabs scrollX = {scrollX} onBottomTabPress = {onBottomTabPress} />
+                        <Tabs onBottomTabPress = {onBottomTabPress} />
                     </View>
                 </Shadow>
             </View>
@@ -88,8 +84,9 @@ const MainLayout: FC<Props> = props => {
         <View style={styles.container}>
         {/* CONTENT */}
         {RenderContent()}
+
         {/* BOTTOM NAVIGATOR */}
-        {renderBottomTabs()}
+        {RenderBottomTabs()}
         </View>
     );
 };
