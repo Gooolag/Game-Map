@@ -1,29 +1,22 @@
 import React, { FC } from "react";
 
-import {
-    View, 
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-} from 'react-native'
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-interface Props {
+interface Props {}
 
-}
-
-const Profile : FC<Props> = () => {
+const Profile: FC<Props> = () => {
     return (
-        <SafeAreaView style = {styles.container} >
+        <SafeAreaView style={styles.container}>
             <Text> This is Profile </Text>
         </SafeAreaView>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
-    container : {
+    container: {
         flex: 1,
-    }
-})
+    },
+});
 
 export default Profile;
