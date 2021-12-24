@@ -1,4 +1,5 @@
-import theme, { COLORS, SIZES } from './theme';
+import theme from './colors';
+import {COLORS, SIZES} from './colors'
 import icons from './icons';
 import constants from './constants';
 

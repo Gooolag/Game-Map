@@ -1,4 +1,5 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,17 +9,18 @@ import {
 } from 'react-native';
 
 //React Navigation
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import MainLayout from './screens/Dashboard/MainLayout';
 
-interface Props {}
+interface Props { }
 
 const Stack = createNativeStackNavigator();
 
 const App: FC<Props> = props => {
   return (
     <NavigationContainer>
+
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
@@ -27,9 +29,11 @@ const App: FC<Props> = props => {
         <Stack.Screen
           name="Dashboard"
           component={MainLayout}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
+
+
     </NavigationContainer>
   );
 };

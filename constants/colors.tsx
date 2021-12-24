@@ -1,6 +1,18 @@
 import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get('window');
+export const lightColors = {
+    background: '#FFFFFF',
+    primary: '#512DA8',
+    text: '#121212',
+    error: '#D32F2F',
+};
 
+export const darkColors = {
+    background: '#121212',
+    primary: '#B39DDB',
+    text: '#FFFFFF',
+    error: '#EF9A9A',
+};
 export const COLORS = {
     //Base Colors
     primary : "#F96D41",
@@ -17,7 +29,7 @@ export const COLORS = {
     gray : "2D3038",
     gray1 : "#282C35",
     darkRed : "#31262F",
-    lightBlue : "#C5505E",
+    lightRed : "#C5505E",
     darkBlue : "#22273B",
     lightBlue : "#424BAF",
     darkGreen : "#213432",
@@ -52,3 +64,5 @@ export const SIZES = {
 const appTheme = { COLORS, SIZES };
 
 export default appTheme;
+
+export type Colors = typeof lightColors;
